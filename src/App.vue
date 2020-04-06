@@ -1,5 +1,5 @@
 <template>
-<v-app>
+<v-app v-model="dark">
     <v-app-bar app clipped-left>
       <v-toolbar-title>Shorty</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -18,9 +18,18 @@
 
 <script>
   export default{
+    mounted() {
+      const theme = localStorage.getItem("useDarkTheme");
+        if (theme) {
+          if (theme == "true") {
+            this.$vuetify.theme.dark = true;
+          } else this.$vuetify.theme.dark = false;
+      }
+    },
     methods: {
       change_color () {
-        this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+        this.$vuetify.theme.dark= !this.$vuetify.theme.dark;
+        localStorage.setItem("useDarkTheme", this.$vuetify.theme.dark.toString())      
       },
     },
   }
