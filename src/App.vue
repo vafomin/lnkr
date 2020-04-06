@@ -1,5 +1,5 @@
 <template>
-<v-app v-model="dark">
+<v-app>
     <v-app-bar app clipped-left>
       <v-toolbar-title>Shorty</v-toolbar-title>
       <v-spacer></v-spacer>
