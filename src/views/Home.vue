@@ -36,7 +36,7 @@
                 url: this.url
             })
             .then(response => {
-                this.short_url += "https://myshortyapi.herokuapp.com/u/" + response.data.token;
+                this.short_url = "https://myshortyapi.herokuapp.com/u/" + response.data.token;
                 console.log(response.data.token);
             })
             .catch(error => {
