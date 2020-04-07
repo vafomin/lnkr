@@ -15,19 +15,35 @@
               </template>
               </v-text-field> 
           </v-flex>
-          <a :href="short_url" target="_blank">{{ short_url }}</a>
+
+          <v-flex xs12="xs12" md10="md10">
+            <div v-for="u in my_urls" :key="u.url">
+              <Card :title="u.url" :short_url="u.short_url" />
+              <br>
+            </div>
+          </v-flex>
       </v-layout>
   </div>
 </template>
 
 <script>
   import axios from "axios"
+  import Card from "../components/Card";
 
   export default{
+    components: {
+      Card
+    },
     data(){
       return{
         url: "",
-        short_url: ""
+        short_url: "",
+        my_urls: []
+      }
+    },
+    mounted(){
+      if (localStorage.getItem('my_urls')) {
+        this.my_urls = JSON.parse(localStorage.getItem('my_urls'));
       }
     },
     methods: {
@@ -37,11 +53,18 @@
             })
             .then(response => {
                 this.short_url = "https://myshortyapi.herokuapp.com/u/" + response.data.token;
+                this.my_urls.push({ "url": this.url, "short_url": this.short_url });
+                this.save_urls();
                 console.log(response.data.token);
             })
             .catch(error => {
                 console.log(error);
             });        
+        },
+
+        save_urls(){
+          const parsed = JSON.stringify(this.my_urls);
+          localStorage.setItem('my_urls', parsed);
         }
     }
   }
