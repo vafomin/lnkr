@@ -2,18 +2,21 @@
   <div class="v-container pa-4">
       <v-layout class="text-xs-center" column="column" justify-center="justify-center" align-center="align-center">
           <v-flex xs12="xs12" md10="md10">
+            <v-form v-model="valid">
               <v-text-field
                     v-model="url"
+                    :rules="url_rules"
                     label="Type URL..."
                     solo
                     style="margin-right: 15px; width: 50em"
               >
               <template slot="append">
-                    <v-btn outlined @click="short()">
+                    <v-btn outlined @click="short()" :disabled="!valid">
                         SHORT
                     </v-btn>
               </template>
-              </v-text-field> 
+              </v-text-field>
+            </v-form> 
           </v-flex>
 
           <v-flex xs12="xs12" md10="md10">
@@ -36,6 +39,11 @@
     },
     data(){
       return{
+        valid: true,
+        url_rules: [
+          u => !!u || 'URL is required',
+          u => /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)/g.test(u) || 'URL must be valid',
+        ],
         url: "",
         short_url: "",
         my_urls: []
