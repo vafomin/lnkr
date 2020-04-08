@@ -13,6 +13,9 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+    <v-footer app>
+      <span>Created by <a href="https://enotcode.com" target="_blank">enotcode</a></span>
+    </v-footer>
 </v-app>
 </template>
 
