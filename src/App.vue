@@ -1,6 +1,13 @@
 <template>
 <v-app>
     <v-app-bar app clipped-left>
+      <v-img
+        class="mx-2"
+        src="assets/logo.png"
+        max-height="40"
+        max-width="40"
+        contain
+      ></v-img>
       <v-toolbar-title>Shorty</v-toolbar-title>
       <v-spacer></v-spacer>
 
