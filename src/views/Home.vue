@@ -2,11 +2,12 @@
   <div class="v-container pa-4">
       <v-layout class="text-xs-center" column="column" justify-center="justify-center" align-center="align-center">
           <v-flex xs12="xs12" md10="md10">
-            <v-form v-model="valid">
+            <v-form v-model="valid" @submit.prevent="">
               <v-text-field
                     v-model="url"
                     :rules="url_rules"
                     label="Type URL..."
+                    v-on:keyup.enter="short()"
                     solo
                     style="margin-right: 15px; width: 50em"
               >
@@ -20,7 +21,7 @@
           </v-flex>
 
           <v-flex xs12="xs12" md10="md10">
-            <div v-for="u in my_urls" :key="u.url">
+            <div v-for="u in my_urls.reverse()" :key="u.url">
               <Card :title="u.url" :short_url="u.short_url" />
               <br>
             </div>
@@ -56,6 +57,7 @@
     },
     methods: {
         short(){
+          if (this.valid){
             axios.post("https://myshortyapi.herokuapp.com/", {
                 url: this.url
             })
@@ -67,7 +69,8 @@
             })
             .catch(error => {
                 console.log(error);
-            });        
+            });
+          }        
         },
 
         save_urls(){
