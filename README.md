@@ -1,8 +1,8 @@
-# Shorty
+# ![logo](public/favicon.ico) Shorty
  
 Simple link shortening on Vue.js
 
-[Go to live](https://myshortyapi.herokuapp.com/)
+[shrt.xyz](https://shrt.xyz/)
 
 # Local launch
 

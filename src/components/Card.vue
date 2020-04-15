@@ -4,8 +4,10 @@
     width="40em"
   >
     <v-card-text>
-      <p class="title">{{ title }}</p>
-      <a class="subtitle-1" :href="short_url" target="_blank">{{ short_url }}</a>
+      <p class="headline">{{ title }}</p>
+      <a :href="short_url" target="_blank">
+        <p class="title" >{{ short_url }}</p>
+      </a>
       <v-spacer></v-spacer>
       <v-btn
         color="primary"
@@ -43,3 +45,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  a { 
+    text-decoration: none;
+  } 
+</style>

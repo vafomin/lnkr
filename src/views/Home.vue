@@ -57,11 +57,11 @@
     methods: {
         short(){
           if (this.valid){
-            axios.post("https://myshortyapi.herokuapp.com/", {
+            axios.post("https://shrt.zyx/", {
                 url: this.url
             })
             .then(response => {
-                this.short_url = "https://myshortyapi.herokuapp.com/u/" + response.data.token;
+                this.short_url = "https://shrt.xyz/u/" + response.data.token;
                 this.my_urls.push({ "url": this.url, "short_url": this.short_url });
                 this.save_urls();
                 console.log(response.data.token);
