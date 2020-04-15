@@ -57,7 +57,7 @@
     methods: {
         short(){
           if (this.valid){
-            axios.post("https://shrt.zyx/", {
+            axios.post("https://shrt.xyz/", {
                 url: this.url
             })
             .then(response => {
