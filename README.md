@@ -1,8 +1,9 @@
 # ![logo](public/favicon.ico) Shorty
  
-Simple link shortening on Vue.js
+Simple link shortening on Vue.js 
 
 [shrt.xyz](https://shrt.xyz/)
+![screenshot](.github/screenshot.png)
 
 # Local launch
 
