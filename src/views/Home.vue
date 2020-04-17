@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import axios from "axios"
+  import api from "../plugins/api"
   import Card from "../components/Card";
 
   export default{
@@ -57,17 +57,11 @@
     methods: {
         short(){
           if (this.valid){
-            axios.post("https://shrt.xyz/", {
-                url: this.url
-            })
+            api.shortURL(this.url)
             .then(response => {
-                this.short_url = "https://shrt.xyz/u/" + response.data.token;
-                this.my_urls.push({ "url": this.url, "short_url": this.short_url });
-                this.save_urls();
-                console.log(response.data.token);
-            })
-            .catch(error => {
-                console.log(error);
+              this.short_url = "https://shrt.xyz/u/" + response;
+              this.my_urls.push({ "url": this.url, "short_url": this.short_url });
+              this.save_urls();
             });
           }        
         },
