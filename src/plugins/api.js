@@ -6,7 +6,7 @@ const api = {
     async getToken(token){
         return await axios.get(`/get?token=${token}`)
         .then(response => {
-          return response.data.url;
+            return response.data;
         })
         .catch(error => {
           console.log(error);

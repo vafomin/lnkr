@@ -17,7 +17,11 @@
     mounted(){
       api.getToken(this.$route.params.token)
       .then(response => {
-        document.location.href = response;
+        if (response == "404"){
+          this.$router.push("../notFound");
+        } else{
+          document.location.href = response.url;
+        }
       });
     }
   }
