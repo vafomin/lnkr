@@ -8,7 +8,8 @@
       <a :href="short_url" target="_blank">
         <p class="title" >{{ short_url }}</p>
       </a>
-      <v-spacer></v-spacer>
+    </v-card-text>
+    <v-card-actions>
       <v-btn
         color="primary"
         outlined
@@ -16,7 +17,8 @@
       >
         QR-code
       </v-btn>
-      <v-dialog
+    </v-card-actions>
+    <v-dialog
         v-model="dialog"
         max-width="290"
       >
@@ -27,7 +29,6 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-    </v-card-text>
   </v-card>
 </template>
 
