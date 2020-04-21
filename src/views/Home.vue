@@ -21,7 +21,7 @@
 
             <v-flex xs12="xs12" md10="md10">
                 <div v-for="u in my_urls.slice().reverse()" :key="u.url">
-                    <Card :title="u.url" :short_url="u.short_url"/>
+                    <Card :title="u.url" :short_url="u.short_url" :token="u.token"/>
                     <br>
                 </div>
             </v-flex>
@@ -46,6 +46,7 @@
                 ],
                 url: "",
                 short_url: "",
+                token: "",
                 my_urls: []
             }
         },
@@ -59,8 +60,9 @@
                 if (this.valid) {
                     api.shortURL(this.url)
                         .then(response => {
-                            this.short_url = "https://shrt.xyz/u/" + response;
-                            this.my_urls.push({"url": this.url, "short_url": this.short_url});
+                            this.token = response;
+                            this.short_url = "https://shrt.xyz/u/" + this.token;
+                            this.my_urls.push({"url": this.url, "short_url": this.short_url, "token": this.token});
                             this.save_urls();
                         });
                 }
