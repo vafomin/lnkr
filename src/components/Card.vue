@@ -30,7 +30,7 @@
             <v-card>
                 <v-card-title class="headline">QR-code</v-card-title>
                 <v-card-text>
-                    <qrcode :value="title" :options="{ width: 200 }"></qrcode>
+                    <qrcode :value="short_url" :options="{ width: 200 }"></qrcode>
                 </v-card-text>
             </v-card>
         </v-dialog>
