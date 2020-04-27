@@ -12,7 +12,7 @@
             <v-spacer></v-spacer>
 
             <v-btn icon @click="change_color()">
-                <v-icon>invert_colors</v-icon>
+                <v-icon>{{ icon }}</v-icon>
             </v-btn>
             <v-btn icon @click.stop="dialog = true">
                 <v-icon>help_outline</v-icon>
@@ -57,6 +57,15 @@
         data() {
             return {
                 dialog: false,
+            }
+        },
+        computed: {
+            icon: function () {
+                if (this.$vuetify.theme.dark) {
+                    return "wb_sunny"
+                } else {
+                    return "brightness_2"
+                }
             }
         },
         mounted() {
