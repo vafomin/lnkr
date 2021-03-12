@@ -3,5 +3,19 @@
     "all": "cd frontend && yarn && cd ../server && yarn",
     "frontend": "cd frontend && yarn serve",
     "server": "cd server && yarn start"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-convert": "^2.0.0",
+    "koa-router": "^10.0.0",
+    "mongoose": "^5.12.0"
   }
 }
