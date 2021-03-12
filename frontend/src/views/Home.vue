@@ -76,6 +76,7 @@ export default {
             token: this.token,
           });
           this.save_urls();
+          this.url = "";
         });
       }
     },
