@@ -25,7 +25,7 @@
       </v-flex>
 
       <v-flex xs12="xs12" md10="md10">
-        <div v-for="u in my_urls.slice().reverse()" :key="u.url">
+        <div v-for="u in my_urls.slice().reverse()" :key="u.token">
           <Card :title="u.url" :short_url="u.short_url" :token="u.token" />
           <br />
         </div>
