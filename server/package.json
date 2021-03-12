@@ -17,6 +17,7 @@
     "koa-convert": "last",
     "koa-router": "last",
     "mongoose": "last",
-    "@koa/cors": "last"
+    "@koa/cors": "last",
+    "dotenv": "last"
   }
 }
