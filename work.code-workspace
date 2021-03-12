@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "name": "⚡️ Shorty",
+      "path": "."
+    },
+    {
+      "name": "🚀 server",
+      "path": "server"
+    },
+    {
+      "name": "🚀 frontend",
+      "path": "frontend"
+    }
+  ],
+  "settings": {
+    "window.zoomLevel": 0,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions": {
+    "recommendations": ["folke.vscode-monorepo-workspace"]
+  }
+}

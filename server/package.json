@@ -1,0 +1,23 @@
+{
+  "name": "shorty.server",
+  "version": "0.2.0",
+  "private": "true",
+  "homepage": "",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "babel-plugin-syntax-async-functions": "last",
+    "babel-plugin-transform-async-to-generator": "last",
+    "babel-preset-es2015-node5": "^last",
+    "babel-preset-stage-0": "last",
+    "babel-register": "last",
+    "koa": "last",
+    "koa-body": "last",
+    "koa-convert": "last",
+    "koa-router": "last",
+    "mongoose": "last",
+    "@koa/cors": "last",
+    "dotenv": "last"
+  }
+}
