@@ -4,7 +4,7 @@ module.exports = {
     version: "0.1.0",
   },
   server: {
-    port: 3000,
+    port: 4000,
   },
   database: {
     url: "mongodb://localhost:27017/shorty",
