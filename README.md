@@ -1,16 +1,16 @@
-# ![logo](public/favicon.ico) Shorty
- 
-Simple link shortening on Vue.js 
+# ![logo](frontend/public/favicon.ico) Shorty
+
+Simple link shortening on Vue.js
 
 [shrt.xyz](https://shrt.xyz/)
 ![screenshot](.github/screenshot.png)
 
 # Used
 
-+ [Vue.js](https://github.com/vuejs/vue)
-+ [Vuetify](https://github.com/vuetifyjs/vuetify)
-+ [Axios](https://github.com/axios/axios)
-+ [VueQrcode](https://github.com/fengyuanchen/vue-qrcode)
+- [Vue.js](https://github.com/vuejs/vue)
+- [Vuetify](https://github.com/vuetifyjs/vuetify)
+- [Axios](https://github.com/axios/axios)
+- [VueQrcode](https://github.com/fengyuanchen/vue-qrcode)
 
 # Local launch
 
