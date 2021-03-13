@@ -9,6 +9,9 @@ const UrlsSchema = new Schema({
     type: String,
     unique: true,
   },
+  watch: {
+    type: Number,
+  },
 });
 
 module.exports = mongoose.model("Urls", UrlsSchema);

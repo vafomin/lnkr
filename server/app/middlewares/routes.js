@@ -25,10 +25,16 @@ router
     let url = new Urls({
       url: ctx.request.body.url,
       token: genToken(),
+      watch: 0,
     });
 
     ctx.status = 201;
     ctx.body = await url.save();
+  })
+  .post("/updWatch", koaBody, async (ctx, next) => {
+    const tkn = ctx.request.body.token;
+    ctx.status = 201;
+    ctx.body = await Urls.update({ token: tkn }, { $inc: { watch: 1 } });
   });
 
 export function routes() {
