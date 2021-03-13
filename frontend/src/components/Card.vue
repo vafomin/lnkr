@@ -11,10 +11,10 @@
         QR-code
       </v-btn>
       <v-spacer />
-      <!--<p>
+      <p>
         <v-icon>visibility</v-icon>
         {{ watch }}
-      </p>-->
+      </p>
     </v-card-actions>
     <v-dialog v-model="dialog" max-width="290">
       <v-card>
@@ -28,8 +28,7 @@
 </template>
 
 <script>
-//import api from "../plugins/api";
-
+import api from "../plugins/api";
 export default {
   name: "Card",
   props: {
@@ -39,21 +38,27 @@ export default {
   },
   data() {
     return {
+      interval: null,
       dialog: false,
       watch: 0,
     };
   },
-  /*mounted() {
+  created() {
+    this.interval = setInterval(this.getWatch, 5000);
+  },
+  mounted() {
     this.getWatch();
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
   methods: {
     getWatch() {
       return api.getWatch(this.token).then((response) => {
-        this.watch = 10;
-        //console.log(response.watch);
+        this.watch = response;
       });
     },
-  },*/
+  },
 };
 </script>
 

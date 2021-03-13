@@ -16,9 +16,32 @@ const api = {
         console.log(error);
       });
   },
-  async getToken(token) {
+  async getURL(token) {
     return await axios
       .get(`/get?tkn=${token}`)
+      .then((response) => {
+        return response.data.url;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  async getWatch(token) {
+    return await axios
+      .get(`/get?tkn=${token}`)
+      .then((response) => {
+        return response.data.watch;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  async updWatch(token) {
+    return await axios
+      .post("/updWatch", {
+        token: token,
+      })
       .then((response) => {
         return response.data;
       })
@@ -26,16 +49,6 @@ const api = {
         console.log(error);
       });
   },
-  /*(async getWatch(token) {
-    return await axios
-      .get(`/getWatch?token=${token}`)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },*/
 };
 
 export default api;

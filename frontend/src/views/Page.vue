@@ -17,14 +17,14 @@
 
 <script>
 import api from "../plugins/api";
-
 export default {
   mounted() {
-    api.getToken(this.$route.params.token).then((response) => {
+    const token = this.$route.params.token;
+    api.getURL(token).then((response) => {
       if (response === "404") {
         this.$router.push("../notFound");
       } else {
-        document.location.href = response.url;
+        api.updWatch(token).then(() => (document.location.href = response));
       }
     });
   },
