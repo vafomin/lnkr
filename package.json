@@ -2,7 +2,8 @@
   "scripts": {
     "all": "cd frontend && yarn && cd ../server && yarn",
     "frontend": "cd frontend && yarn serve",
-    "server": "cd server && yarn start"
+    "server": "cd server && yarn start",
+    "clean": "rimraf node_modules yarn.lock frontend/node_modules frontend/yarn.lock server/node_modules server/yarn.lock"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
@@ -17,5 +18,8 @@
     "koa-convert": "^2.0.0",
     "koa-router": "^10.0.0",
     "mongoose": "^5.12.0"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
