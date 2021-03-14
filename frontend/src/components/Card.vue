@@ -2,9 +2,20 @@
   <v-card class="mx-auto" width="40em">
     <v-card-text>
       <p class="headline">{{ title }}</p>
-      <a :href="short_url" target="_blank">
-        <p class="title">{{ short_url }}</p>
-      </a>
+      <v-row>
+        <v-btn
+          icon
+          color="primary"
+          v-clipboard:copy="short_url"
+          v-clipboard:success="clipboardSuccess"
+          v-clipboard:error="clipboardError"
+        >
+          <v-icon>mdi-content-copy</v-icon>
+        </v-btn>
+        <a :href="short_url" target="_blank">
+          <p class="title">{{ short_url }}</p>
+        </a>
+      </v-row>
     </v-card-text>
     <v-card-actions>
       <v-btn color="primary" outlined @click.stop="dialog = true">
@@ -57,6 +68,12 @@ export default {
       return api.getWatch(this.token).then((response) => {
         this.watch = response;
       });
+    },
+    clipboardSuccess() {
+      console.log("Link copied successfully");
+    },
+    clipboardError() {
+      console.log("Link copying error");
     },
   },
 };
