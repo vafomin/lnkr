@@ -1,6 +1,12 @@
 <template>
   <v-card class="mx-auto" width="40em">
     <v-card-text>
+      <v-alert v-if="successAlert" dense outlined type="success">
+        Link copied successfully
+      </v-alert>
+      <v-alert v-if="errorAlert" dense outlined type="error">
+        Link copying error
+      </v-alert>
       <p class="headline">{{ title }}</p>
       <v-row>
         <v-btn
@@ -52,6 +58,8 @@ export default {
       interval: null,
       dialog: false,
       watch: 0,
+      successAlert: false,
+      errorAlert: false,
     };
   },
   created() {
@@ -70,10 +78,12 @@ export default {
       });
     },
     clipboardSuccess() {
-      console.log("Link copied successfully");
+      this.successAlert = true;
+      setTimeout(() => (this.successAlert = false), 1000);
     },
     clipboardError() {
-      console.log("Link copying error");
+      this.errorAlert = true;
+      setTimeout(() => (this.errorAlert = false), 1000);
     },
   },
 };
