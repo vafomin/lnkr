@@ -7,7 +7,7 @@
       <v-alert v-if="errorAlert" dense outlined type="error">
         Link copying error
       </v-alert>
-      <p class="headline">{{ title }}</p>
+      <p class="headline">{{ title | truncateTitle }}</p>
       <v-row>
         <v-btn
           icon

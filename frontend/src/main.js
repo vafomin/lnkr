@@ -3,6 +3,7 @@ import router from "./plugins/router";
 import vuetify from "./plugins/vuetify";
 import VueQrcode from "@chenfengyuan/vue-qrcode";
 import VueClipboard from "vue-clipboard2";
+import "./plugins/truncate";
 import App from "./App.vue";
 
 Vue.config.productionTip = false;
