@@ -28,10 +28,15 @@
         QR-code
       </v-btn>
       <v-spacer />
-      <p>
+      <p v-if="!isLoading">
         <v-icon>visibility</v-icon>
         {{ watch }}
       </p>
+      <v-progress-circular
+        v-else
+        indeterminate
+        color="primary"
+      ></v-progress-circular>
     </v-card-actions>
     <v-dialog v-model="dialog" max-width="290">
       <v-card>
@@ -55,6 +60,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       interval: null,
       dialog: false,
       watch: 0,
@@ -66,7 +72,8 @@ export default {
     this.interval = setInterval(this.getWatch, 5000);
   },
   mounted() {
-    this.getWatch();
+    this.isLoading = true;
+    this.getWatch().finally(() => (this.isLoading = false));
   },
   beforeDestroy() {
     clearInterval(this.interval);
