@@ -37,11 +37,10 @@
 <script>
 import api from "../plugins/api";
 import config from "../config";
-import Card from "../components/Card";
 
 export default {
   components: {
-    Card,
+    Card: () => import("../components/Card"),
   },
   data() {
     return {

@@ -17,6 +17,7 @@ export const messages = {
     redirecting: "Перенаправляю...",
     error404: "Ошибка 404",
     pageNotFound: "Страница не найдена",
+    home: "На  главную",
     createdBy: "Создано",
   },
   en: {
@@ -37,6 +38,7 @@ export const messages = {
     redirecting: "Redirecting...",
     error404: "Error 404",
     pageNotFound: "Page Not Found",
+    home: "Home",
     createdBy: "Created by",
   },
 };
