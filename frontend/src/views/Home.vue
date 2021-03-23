@@ -11,13 +11,13 @@
           <v-text-field
             v-model="url"
             :rules="url_rules"
-            label="Type URL..."
+            :label="$t('typeURL')"
             solo
             style="margin-right: 15px; width: 50em"
           >
             <template slot="append">
               <v-btn outlined @click="short()" :disabled="!valid">
-                SHORT
+                {{ $t("short") }}
               </v-btn>
             </template>
           </v-text-field>
@@ -47,11 +47,11 @@ export default {
     return {
       valid: true,
       url_rules: [
-        (u) => !!u || "URL is required",
+        (u) => !!u || this.$t("urlRequired"),
         (u) =>
           /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)/g.test(
             u
-          ) || "URL must be valid",
+          ) || this.$t("urlValid"),
       ],
       url: "",
       short_url: "",

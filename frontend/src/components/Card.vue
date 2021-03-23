@@ -2,10 +2,10 @@
   <v-card class="mx-auto" width="40em">
     <v-card-text>
       <v-alert v-if="successAlert" dense outlined type="success">
-        Link copied successfully
+        {{ $t("linkCopiedSuccess") }}
       </v-alert>
       <v-alert v-if="errorAlert" dense outlined type="error">
-        Link copying error
+        {{ $t("linkCopiedError") }}
       </v-alert>
       <p class="headline">{{ title | truncateTitle }}</p>
       <v-row>
@@ -25,7 +25,7 @@
     </v-card-text>
     <v-card-actions>
       <v-btn color="primary" outlined @click.stop="dialog = true">
-        QR-code
+        {{ $t("qrCode") }}
       </v-btn>
       <v-spacer />
       <p v-if="!isLoading">
@@ -40,7 +40,7 @@
     </v-card-actions>
     <v-dialog v-model="dialog" max-width="290">
       <v-card>
-        <v-card-title class="headline">QR-code</v-card-title>
+        <v-card-title class="headline">{{ $t("qrCode") }}</v-card-title>
         <v-card-text>
           <qrcode :value="short_url" :options="{ width: 200 }"></qrcode>
         </v-card-text>

@@ -11,7 +11,23 @@
       <v-toolbar-title>Shorty</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn icon @click="change_color()">
+      <v-menu left bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>language</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item @click="changeLang('en')">
+            <v-list-item-title>{{ $t("english") }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="changeLang('ru')">
+            <v-list-item-title>{{ $t("russian") }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-btn icon @click="changeColor()">
         <v-icon>{{ icon }}</v-icon>
       </v-btn>
       <v-btn icon @click.stop="dialog = true">
@@ -25,18 +41,17 @@
     </v-main>
     <v-footer app>
       <span
-        >Created by
+        >{{ $t("createdBy") }}
         <a href="https://enotcode.com" target="_blank">enotcode</a></span
       >
     </v-footer>
 
     <v-dialog v-model="dialog" max-width="400">
       <v-card>
-        <v-card-title class="headline">What is Shorty?</v-card-title>
+        <v-card-title class="headline">{{ $t("help.title") }}</v-card-title>
 
         <v-card-text class="subtitle-1">
-          Shorty is a simple link shortener with a QR code. It has open source
-          on
+          {{ $t("help.description") }}
           <a href="https://github.com/enotcode/shorty" target="_blank"
             >GitHub</a
           >
@@ -52,6 +67,8 @@
 </template>
 
 <script>
+import i18n from "./plugins/i18n";
+
 export default {
   data() {
     return {
@@ -74,9 +91,13 @@ export default {
     }
   },
   methods: {
-    change_color() {
+    changeColor() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
       localStorage.setItem("useDarkTheme", this.$vuetify.theme.dark.toString());
+    },
+    changeLang(lang) {
+      i18n.locale = lang;
+      localStorage.setItem("lang", lang);
     },
   },
 };

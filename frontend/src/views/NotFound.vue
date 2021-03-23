@@ -8,8 +8,8 @@
     >
       <v-flex xs12="xs12" md10="md10">
         <div class="headline pb-4">
-          <h1>Error 404</h1>
-          <h2>Page Not Found</h2>
+          <h1>{{ $t("error404") }}</h1>
+          <h2>{{ $t("pageNotFound") }}</h2>
         </div>
         <v-btn to="/" class="ma-2" block outlined color="primary">HOME</v-btn>
       </v-flex>
