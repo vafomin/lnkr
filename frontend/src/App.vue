@@ -19,11 +19,12 @@
         </template>
 
         <v-list>
-          <v-list-item @click="changeLang('en')">
-            <v-list-item-title>{{ $t("english") }}</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="changeLang('ru')">
-            <v-list-item-title>{{ $t("russian") }}</v-list-item-title>
+          <v-list-item
+            v-for="lang in languages"
+            :key="lang"
+            @click="changeLang(lang)"
+          >
+            <v-list-item-title>{{ $t(lang) }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -68,11 +69,13 @@
 
 <script>
 import i18n from "./plugins/i18n";
+import { languages } from "./config";
 
 export default {
   data() {
     return {
       dialog: false,
+      languages: languages,
     };
   },
   computed: {

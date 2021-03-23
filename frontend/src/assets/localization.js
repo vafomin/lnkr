@@ -1,7 +1,7 @@
 export const messages = {
   ru: {
-    english: "Английский",
-    russian: "Русский",
+    en: "Английский",
+    ru: "Русский",
     help: {
       title: "Что такое Shorty?",
       description:
@@ -20,8 +20,8 @@ export const messages = {
     createdBy: "Создано",
   },
   en: {
-    english: "English",
-    russian: "Russian",
+    en: "English",
+    ru: "Russian",
     help: {
       title: "What is Shorty?",
       description:
