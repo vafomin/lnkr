@@ -7,19 +7,19 @@
       <v-alert v-if="errorAlert" dense outlined type="error">
         {{ $t("linkCopiedError") }}
       </v-alert>
-      <p class="headline">{{ title | truncateTitle }}</p>
+      <p class="headline">{{ url | truncateTitle }}</p>
       <v-row>
         <v-btn
           icon
           color="primary"
-          v-clipboard:copy="short_url"
+          v-clipboard:copy="shortUrl"
           v-clipboard:success="clipboardSuccess"
           v-clipboard:error="clipboardError"
         >
           <v-icon>mdi-content-copy</v-icon>
         </v-btn>
-        <a :href="short_url" target="_blank">
-          <p class="title">{{ short_url }}</p>
+        <a :href="shortUrl" target="_blank">
+          <p class="title">{{ shortUrl }}</p>
         </a>
       </v-row>
     </v-card-text>
@@ -28,21 +28,14 @@
         {{ $t("qrCode") }}
       </v-btn>
       <v-spacer />
-      <p v-if="!isLoading">
-        <v-icon>visibility</v-icon>
-        {{ watch }}
-      </p>
-      <v-progress-circular
-        v-else
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
+      <v-icon>visibility</v-icon>
+      {{ watch }}
     </v-card-actions>
     <v-dialog v-model="dialog" max-width="290">
       <v-card>
         <v-card-title class="headline">{{ $t("qrCode") }}</v-card-title>
         <v-card-text>
-          <qrcode :value="short_url" :options="{ width: 200 }"></qrcode>
+          <qrcode :value="shortUrl" :options="{ width: 200 }"></qrcode>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -50,40 +43,40 @@
 </template>
 
 <script>
-import api from "../plugins/api";
+import { mapActions } from "vuex";
+import config from "../config";
+
 export default {
   name: "Card",
   props: {
-    title: String,
-    short_url: String,
     token: String,
   },
   data() {
     return {
-      isLoading: false,
-      interval: null,
       dialog: false,
-      watch: 0,
       successAlert: false,
       errorAlert: false,
+      url: "",
+      watch: 0,
     };
   },
-  created() {
-    this.interval = setInterval(this.getWatch, 5000);
-  },
-  mounted() {
-    this.isLoading = true;
-    this.getWatch().finally(() => (this.isLoading = false));
-  },
-  beforeDestroy() {
-    clearInterval(this.interval);
-  },
-  methods: {
-    getWatch() {
-      return api.getWatch(this.token).then((response) => {
-        this.watch = response;
-      });
+
+  computed: {
+    shortUrl() {
+      return `${config.app.url}/u/${this.token}`;
     },
+  },
+
+  mounted() {
+    this.getUrlInfo({ token: this.token }).then((data) => {
+      this.url = data.url;
+      this.watch = data.watch;
+    });
+  },
+
+  methods: {
+    ...mapActions("urls", ["getUrlInfo"]),
+
     clipboardSuccess() {
       this.successAlert = true;
       setTimeout(() => (this.successAlert = false), 1000);

@@ -16,27 +16,16 @@ const api = {
         console.log(error);
       });
   },
-  async getURL(token) {
+  async getUrlInfo(token) {
     return await axios
       .get(`/get?tkn=${token}`)
       .then((response) => {
-        return response.data.url;
+        return response.data;
       })
       .catch((error) => {
         console.log(error);
       });
   },
-  async getWatch(token) {
-    return await axios
-      .get(`/get?tkn=${token}`)
-      .then((response) => {
-        return response.data.watch;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
-
   async updWatch(token) {
     return await axios
       .post("/updWatch", {

@@ -5,6 +5,7 @@ import VueQrcode from "@chenfengyuan/vue-qrcode";
 import VueClipboard from "vue-clipboard2";
 import "./plugins/truncate";
 import i18n from "./plugins/i18n";
+import store from "./store";
 import App from "./App.vue";
 
 Vue.config.productionTip = false;
@@ -16,5 +17,6 @@ new Vue({
   router,
   vuetify,
   i18n,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

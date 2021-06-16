@@ -25,8 +25,8 @@
       </v-flex>
 
       <v-flex xs12="xs12" md10="md10">
-        <div v-for="u in my_urls.slice().reverse()" :key="u.token">
-          <Card :title="u.url" :short_url="u.short_url" :token="u.token" />
+        <div v-for="url in urls" :key="url.token">
+          <Card :token="url.token" />
           <br />
         </div>
       </v-flex>
@@ -35,8 +35,7 @@
 </template>
 
 <script>
-import api from "../plugins/api";
-import config from "../config";
+import { mapState, mapActions } from "vuex";
 
 export default {
   components: {
@@ -53,36 +52,20 @@ export default {
           ) || this.$t("urlValid"),
       ],
       url: "",
-      short_url: "",
-      token: "",
-      my_urls: [],
     };
   },
-  mounted() {
-    if (localStorage.getItem("my_urls")) {
-      this.my_urls = JSON.parse(localStorage.getItem("my_urls"));
-    }
+
+  computed: {
+    ...mapState("urls", ["urls"]),
   },
+
   methods: {
+    ...mapActions("urls", ["shortUrl"]),
+
     short() {
       if (this.valid) {
-        api.shortURL(this.url).then((response) => {
-          this.token = response;
-          this.short_url = `${config.app.url}/u/${this.token}`;
-          this.my_urls.push({
-            url: this.url,
-            short_url: this.short_url,
-            token: this.token,
-          });
-          this.save_urls();
-          this.url = "";
-        });
+        this.shortUrl({ url: this.url });
       }
-    },
-
-    save_urls() {
-      const parsed = JSON.stringify(this.my_urls);
-      localStorage.setItem("my_urls", parsed);
     },
   },
 };

@@ -11,11 +11,15 @@
     "@chenfengyuan/vue-qrcode": "^1.0.2",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "secure-ls": "^1.2.6",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
     "vue-i18n": "^8.24.1",
     "vue-router": "^3.1.6",
-    "vuetify": "^2.2.21"
+    "vuetify": "^2.2.21",
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.0.0-beta.3",
+    "vuex-shared-mutations": "^1.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.0",

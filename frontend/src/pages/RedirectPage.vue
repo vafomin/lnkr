@@ -20,11 +20,11 @@ import api from "../plugins/api";
 export default {
   mounted() {
     const token = this.$route.params.token;
-    api.getURL(token).then((response) => {
+    api.getUrlInfo(token).then((response) => {
       if (response === "404") {
         this.$router.push("../notFound");
       } else {
-        api.updWatch(token).then(() => (document.location.href = response));
+        api.updWatch(token).then(() => (document.location.href = response.url));
       }
     });
   },
