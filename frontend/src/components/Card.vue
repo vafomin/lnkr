@@ -29,8 +29,7 @@
           {{ $t("qrCode") }}
         </v-btn>
         <v-spacer />
-        <v-icon>visibility</v-icon>
-        {{ watch }}
+        <p><v-icon>visibility</v-icon> {{ watch }}</p>
       </v-card-actions>
     </div>
     <v-skeleton-loader v-else class="mx-auto" width="40em" type="article" />

@@ -65,6 +65,7 @@ export default {
     short() {
       if (this.valid) {
         this.shortUrl({ url: this.url });
+        this.url = "";
       }
     },
   },
