@@ -5,6 +5,7 @@ import createMutationsSharer from "vuex-shared-mutations";
 import SecureLS from "secure-ls";
 
 import urls from "./modules/urls";
+import common from "./modules/common";
 
 let ls = new SecureLS({ isCompression: false });
 
@@ -26,6 +27,7 @@ const sharedMutation = createMutationsSharer({
 export const store = new Vuex.Store({
   modules: {
     urls,
+    common,
   },
   plugins: [dataState, sharedMutation],
 });

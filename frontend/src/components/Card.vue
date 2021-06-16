@@ -2,12 +2,6 @@
   <v-card class="mx-auto" width="40em">
     <div v-if="isLoading">
       <v-card-text>
-        <v-alert v-if="successAlert" dense outlined type="success">
-          {{ $t("linkCopiedSuccess") }}
-        </v-alert>
-        <v-alert v-if="errorAlert" dense outlined type="error">
-          {{ $t("linkCopiedError") }}
-        </v-alert>
         <p class="headline">{{ url | truncateTitle }}</p>
         <v-row>
           <v-btn
@@ -46,7 +40,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 import config from "../config";
 
 export default {
@@ -57,8 +51,6 @@ export default {
   data() {
     return {
       dialog: false,
-      successAlert: false,
-      errorAlert: false,
       url: "",
       watch: 0,
       isLoading: false,
@@ -66,6 +58,8 @@ export default {
   },
 
   computed: {
+    ...mapState("common", ["timeoutSnackbar"]),
+
     shortUrl() {
       return `${config.app.url}/u/${this.token}`;
     },
@@ -84,14 +78,15 @@ export default {
 
   methods: {
     ...mapActions("urls", ["getUrlInfo"]),
+    ...mapMutations("common", ["setSuccessSnackbar", "setErrorSnackbar"]),
 
     clipboardSuccess() {
-      this.successAlert = true;
-      setTimeout(() => (this.successAlert = false), 1000);
+      this.setSuccessSnackbar(true);
+      setTimeout(() => this.setSuccessSnackbar(false), this.timeoutSnackbar);
     },
     clipboardError() {
-      this.errorAlert = true;
-      setTimeout(() => (this.errorAlert = false), 1000);
+      this.setErrorSnackbar(true);
+      setTimeout(() => this.setErrorSnackbar(false), this.timeoutSnackbar);
     },
   },
 };

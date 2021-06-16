@@ -30,6 +30,30 @@
           <br />
         </div>
       </v-flex>
+
+      <v-snackbar
+        :timeout="timeoutSnackbar"
+        :value="successSnackbar"
+        absolute
+        bottom
+        color="success"
+      >
+        <span
+          ><v-icon>mdi-checkbox-marked-circle</v-icon>
+          {{ $t("linkCopiedSuccess") }}</span
+        >
+      </v-snackbar>
+      <v-snackbar
+        :timeout="timeoutSnackbar"
+        :value="errorSnackbar"
+        absolute
+        bottom
+        color="error"
+      >
+        <span
+          ><v-icon>mdi-alert-circle</v-icon> {{ $t("linkCopiedError") }}</span
+        >
+      </v-snackbar>
     </v-layout>
   </div>
 </template>
@@ -57,6 +81,11 @@ export default {
 
   computed: {
     ...mapState("urls", ["urls"]),
+    ...mapState("common", [
+      "successSnackbar",
+      "errorSnackbar",
+      "timeoutSnackbar",
+    ]),
   },
 
   methods: {
