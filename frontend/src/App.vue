@@ -11,28 +11,11 @@
       <v-toolbar-title>Shorty</v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-menu left bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <v-icon>language</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item
-            v-for="lang in languages"
-            :key="lang"
-            @click="changeLang(lang)"
-          >
-            <v-list-item-title>{{ $t(lang) }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-      <v-btn icon @click="changeColor()">
-        <v-icon>{{ icon }}</v-icon>
-      </v-btn>
       <v-btn icon @click.stop="dialog = true">
         <v-icon>help_outline</v-icon>
+      </v-btn>
+      <v-btn icon @click.stop="showDialog">
+        <v-icon>mdi-settings</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -64,43 +47,41 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <SettingsDialog :visible="showSettingsDialog" />
   </v-app>
 </template>
 
 <script>
-import i18n from "./plugins/i18n";
-import { languages } from "./config";
+import { mapState, mapMutations } from "vuex";
 
 export default {
+  components: {
+    SettingsDialog: () => import("./components/SettingsDialog"),
+  },
+
   data() {
     return {
       dialog: false,
-      languages: languages,
     };
   },
+
   computed: {
-    icon: function() {
-      if (this.$vuetify.theme.dark) {
-        return "wb_sunny";
-      } else {
-        return "brightness_2";
-      }
-    },
+    ...mapState("settings", ["showSettingsDialog"]),
   },
+
   mounted() {
     const theme = localStorage.getItem("useDarkTheme");
     if (theme) {
       this.$vuetify.theme.dark = theme === "true";
     }
   },
+
   methods: {
-    changeColor() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      localStorage.setItem("useDarkTheme", this.$vuetify.theme.dark.toString());
-    },
-    changeLang(lang) {
-      i18n.locale = lang;
-      localStorage.setItem("lang", lang);
+    ...mapMutations("settings", ["setShowSettingsDialog"]),
+
+    showDialog() {
+      this.setShowSettingsDialog(!this.showSettingsDialog);
     },
   },
 };

@@ -1,12 +1,18 @@
 export const messages = {
   ru: {
-    en: "Английский",
-    ru: "Русский",
     help: {
       title: "Что такое Shorty?",
       description:
         "Shorty это простая сокращалка ссылок с QR-кодом. Она имеет открытые исходники на",
     },
+
+    settings: {
+      title: "Настройки",
+      changeTheme: "Сменить тему",
+      selectLang: "Выберите язык",
+      closeBtn: "Закрыть",
+    },
+
     typeURL: "Введите URL",
     short: "Сократить",
     urlRequired: "URL обязателен",
@@ -20,14 +26,21 @@ export const messages = {
     home: "На  главную",
     createdBy: "Создано",
   },
+
   en: {
-    en: "English",
-    ru: "Russian",
     help: {
       title: "What is Shorty?",
       description:
         "Shorty is a simple link shortener with a QR code. It has open source on",
     },
+
+    settings: {
+      title: "Settings",
+      changeTheme: "Change theme",
+      selectLang: "Select language",
+      closeBtn: "Close",
+    },
+
     typeURL: "Type URL",
     short: "Short",
     urlRequired: "URL is required",
