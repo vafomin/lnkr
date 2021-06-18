@@ -36,9 +36,7 @@
 
         <v-card-text class="subtitle-1">
           {{ $t("help.description") }}
-          <a href="https://github.com/enotcode/shorty" target="_blank"
-            >GitHub</a
-          >
+          <a href="https://github.com/vafomin/shorty" target="_blank">GitHub</a>
         </v-card-text>
         <v-card-actions class="justify-center">
           <v-btn color="primary" outlined @click="dialog = false">
