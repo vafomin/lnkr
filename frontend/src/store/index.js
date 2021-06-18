@@ -6,6 +6,7 @@ import SecureLS from "secure-ls";
 
 import urls from "./modules/urls";
 import common from "./modules/common";
+import settings from "./modules/settings";
 
 let ls = new SecureLS({ isCompression: false });
 
@@ -28,6 +29,7 @@ export const store = new Vuex.Store({
   modules: {
     urls,
     common,
+    settings,
   },
   plugins: [dataState, sharedMutation],
 });
