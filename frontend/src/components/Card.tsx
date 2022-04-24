@@ -25,8 +25,10 @@ const Card: React.FC<CardProps> = (props) => {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const shortUrl = `${defaultDomain}/u/${token}`;
+
   const onCopyClick = useCallback(() => {
-    clipboard.copy(url);
+    clipboard.copy(shortUrl);
     toast({
       position: "top-right",
       title: "Copied!",
@@ -48,7 +50,7 @@ const Card: React.FC<CardProps> = (props) => {
             {url}
           </Text>
         </Box>
-        <Link href={`${defaultDomain}/u/${token}`} isExternal>
+        <Link href={shortUrl} isExternal>
           Go linkr <ExternalLinkIcon mx="2px" />
         </Link>
       </Box>
@@ -65,11 +67,7 @@ const Card: React.FC<CardProps> = (props) => {
           QR-code
         </Button>
       </Box>
-      <QrModal
-        url={`${defaultDomain}/u/${token}`}
-        isOpen={isOpen}
-        onClose={onClose}
-      />
+      <QrModal url={shortUrl} isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 };
