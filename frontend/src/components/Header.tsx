@@ -15,8 +15,11 @@ const Header: React.FC = () => {
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
       <Flex h={16} alignItems="center" justifyContent="space-between">
-        <Box>
-          <Text fontSize="2xl">Lnkr</Text>
+        <Box display="flex" alignItems="center">
+          <img src="/logo.png" />
+          <Text fontSize="2xl" px={2}>
+            Lnkr
+          </Text>
         </Box>
 
         <Flex alignItems="center">
