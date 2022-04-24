@@ -1,7 +1,16 @@
 import { useCallback } from "react";
-import { Box, Text, Link, Button, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Link,
+  Button,
+  useToast,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { ExternalLinkIcon, CopyIcon } from "@chakra-ui/icons";
 import { useClipboard } from "use-clipboard-copy";
+
+import QrModal from "./QrModal";
 
 interface CardProps {
   url: string;
@@ -12,6 +21,7 @@ const Card: React.FC<CardProps> = (props) => {
   const { url, token } = props;
   const clipboard = useClipboard();
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const onCopyClick = useCallback(() => {
     clipboard.copy(url);
@@ -23,6 +33,10 @@ const Card: React.FC<CardProps> = (props) => {
       isClosable: true,
     });
   }, [clipboard.copy]);
+
+  const onQrClick = () => {
+    onOpen();
+  };
 
   return (
     <Box w="100%" p={4} borderRadius="lg" borderWidth="1px">
@@ -43,10 +57,15 @@ const Card: React.FC<CardProps> = (props) => {
         >
           Copy link
         </Button>
-        <Button size="sm" colorScheme="teal">
+        <Button size="sm" colorScheme="teal" onClick={onQrClick}>
           QR-code
         </Button>
       </Box>
+      <QrModal
+        url={`http://localhost:3001/u/${token}`}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </Box>
   );
 };
