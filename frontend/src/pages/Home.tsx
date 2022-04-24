@@ -1,5 +1,13 @@
+import { Container, Center } from "@chakra-ui/react";
+
 const Home: React.FC = () => {
-  return <h1>Home</h1>;
+  return (
+    <Container>
+      <Center pt={8}>
+        <h1>Home</h1>
+      </Center>
+    </Container>
+  );
 };
 
 export default Home;
