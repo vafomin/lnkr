@@ -14,3 +14,16 @@ export const shortURL = async (url: string) => {
     console.error(e);
   }
 };
+
+export const getURL = async (token: string) => {
+  try {
+    const res = await axios.get(`/get?tkn=${token}`);
+    if (res.status === 200) {
+      return res.data.url;
+    } else {
+      throw "Not found";
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
