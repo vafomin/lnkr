@@ -7,11 +7,20 @@ const Page: React.FC = () => {
   const { token } = useParams();
   let navigate = useNavigate();
 
+  const redirect = (url: string) => {
+    if (url.includes("http" || "https")) {
+      document.location.href = url;
+    } else {
+      const newUrl = "https://" + url;
+      document.location.href = newUrl;
+    }
+  };
+
   const getData = async () => {
     if (!token) return;
     const res = await getURL(token);
     if (res) {
-      setTimeout(() => location.replace(res), 10000);
+      setTimeout(() => redirect(res), 10000);
     } else {
       navigate("/error");
     }
