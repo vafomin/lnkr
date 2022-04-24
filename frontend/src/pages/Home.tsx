@@ -20,7 +20,7 @@ const Home: React.FC = () => {
 
   const onShortUrl = async () => {
     const res = await shortURL(url);
-    setUrls([...urls, { url: res.url, token: res.token }]);
+    setUrls([{ url: res.url, token: res.token }, ...urls]);
   };
 
   return (
