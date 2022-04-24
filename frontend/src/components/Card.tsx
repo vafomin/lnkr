@@ -43,9 +43,11 @@ const Card: React.FC<CardProps> = (props) => {
   return (
     <Box w="100%" p={4} borderRadius="lg" borderWidth="1px">
       <Box display="flex" gap={4}>
-        <Text fontSize="md" color="teal" isTruncated>
-          {url}
-        </Text>
+        <Box maxWidth="200px">
+          <Text fontSize="md" color="teal" isTruncated>
+            {url}
+          </Text>
+        </Box>
         <Link href={`${defaultDomain}/u/${token}`} isExternal>
           Go linkr <ExternalLinkIcon mx="2px" />
         </Link>
