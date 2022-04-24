@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { InputGroup, Input, InputRightElement, Button } from "@chakra-ui/react";
+import {
+  InputGroup,
+  Input,
+  InputRightElement,
+  Button,
+  FormControl,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
 interface UrlInputProps {
   url: string;
@@ -21,23 +28,38 @@ const UrlInput: React.FC<UrlInputProps> = (props) => {
   const handleClick = () =>
     urlRegex.test(url) ? onClick() : setIsInvalid(true);
 
+  const onHandleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Enter") handleClick();
+  };
+
   return (
-    <InputGroup size="md">
-      <Input
-        pr="4.5rem"
-        type="text"
-        placeholder="Enter url..."
-        value={url}
-        onChange={onChange}
-        isInvalid={isInvalid}
-        errorBorderColor="red.500"
-      />
-      <InputRightElement width="4.5rem">
-        <Button colorScheme="green" h="1.75rem" size="sm" onClick={handleClick}>
-          Short
-        </Button>
-      </InputRightElement>
-    </InputGroup>
+    <FormControl isInvalid={isInvalid}>
+      <InputGroup size="md">
+        <Input
+          pr="4.5rem"
+          type="text"
+          placeholder="Enter url..."
+          value={url}
+          onChange={onChange}
+          onKeyDown={onHandleKey}
+          errorBorderColor="red.500"
+          focusBorderColor={isInvalid ? "red.500" : "green.500"}
+        />
+        <InputRightElement width="4.5rem">
+          <Button
+            colorScheme="green"
+            h="1.75rem"
+            size="sm"
+            onClick={handleClick}
+          >
+            Short
+          </Button>
+        </InputRightElement>
+      </InputGroup>
+      <FormErrorMessage>
+        {url.trim() === "" ? "URL is required" : "URL is not valid"}
+      </FormErrorMessage>
+    </FormControl>
   );
 };
 
