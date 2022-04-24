@@ -12,6 +12,8 @@ import { useClipboard } from "use-clipboard-copy";
 
 import QrModal from "./QrModal";
 
+import { defaultDomain } from "../config";
+
 interface CardProps {
   url: string;
   token: string;
@@ -44,7 +46,7 @@ const Card: React.FC<CardProps> = (props) => {
         <Text fontSize="md" color="teal" isTruncated>
           {url}
         </Text>
-        <Link href={`http://localhost:3001/u/${token}`} isExternal>
+        <Link href={`${defaultDomain}/u/${token}`} isExternal>
           Go linkr <ExternalLinkIcon mx="2px" />
         </Link>
       </Box>
@@ -62,7 +64,7 @@ const Card: React.FC<CardProps> = (props) => {
         </Button>
       </Box>
       <QrModal
-        url={`http://localhost:3001/u/${token}`}
+        url={`${defaultDomain}/u/${token}`}
         isOpen={isOpen}
         onClose={onClose}
       />

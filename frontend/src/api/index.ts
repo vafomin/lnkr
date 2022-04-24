@@ -1,5 +1,7 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:4000";
+import { defaultApi } from "../config";
+
+axios.defaults.baseURL = defaultApi;
 
 export const shortURL = async (url: string) => {
   const data = { url: url };
