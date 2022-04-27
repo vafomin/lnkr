@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box, Container, Stack } from "@chakra-ui/react";
+import { useLocalStorage } from "usehooks-ts";
 import UrlInput from "../components/UrlInput";
 import Card from "../components/Card";
 
@@ -12,7 +13,7 @@ interface Urls {
 
 const Home: React.FC = () => {
   const [url, setUrl] = useState("");
-  const [urls, setUrls] = useState<Array<Urls>>([]);
+  const [urls, setUrls] = useLocalStorage<Array<Urls>>("myUrls", []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
