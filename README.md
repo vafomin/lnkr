@@ -1,34 +1,41 @@
-# ![logo](frontend/public/favicon.ico) Shorty
+# ![logo](frontend/public/favicon.ico) Lnkr
 
-Simple link shortening on Vue.js
+Simple link shortening
 
-### Live demo: [shrt.xyz](https://shrt.xyz/)
+### Live demo: [lnkr.space](https://lnkr.space/)
 
-![screenshot](.github/screenshot.png)
-
-# Used
+# Stack 🛠
 
 Frontend:
 
-- [Vue.js](https://github.com/vuejs/vue)
-- [Vuetify](https://github.com/vuetifyjs/vuetify)
-- [Axios](https://github.com/axios/axios)
-- [VueQrcode](https://github.com/fengyuanchen/vue-qrcode)
+- React
+- Chakra UI
+- Axios
+- React QR code
 
 Backend:
 
-- [Koa](https://github.com/koajs/koa)
-- [Mongoose](https://github.com/Automattic/mongoose)
+- Koa
+- Mongoose
 
-# Easy local launch
+# Easy local launch 🚀
 
-1. Clone repo: `https://github.com/enotcode/shorty.git`
-2. Run `cd shorty`
-3. Run `yarn all` for installing dependencies
-4. Run `yarn frontend` for starting frontend
-5. Run [MongoDB](https://www.mongodb.com/) and create database with name `shorty`
-6. Run `yarn server` for starting backend
+1. Clone repo: `https://github.com/vafomin/lnkr.git`
+2. Run `cd lnkr`
+3. Run `yarn install` for installing dependencies
+4. Run [MongoDB](https://www.mongodb.com/) and create database
+5. Change the environment variables in the `.env` files
+6. Run `yarn frontend` for starting frontend
+7. Run `yarn server` for starting backend
+8. Congratulations! By default, the site will start on localhost:3000 🎉
 
-# License
+# Environment variables 🌎
+
+- `PORT` - specify the port to start the server
+- `DATABASE` - Enter the address to connect to the MongoDB
+- `VITE_DOMAIN` - specify the address where the frontend is running
+- `VITE_API` - specify the address where the server is running
+
+# License 📜
 
 [MIT](LICENSE)
