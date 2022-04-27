@@ -12,14 +12,10 @@ import { useClipboard } from "use-clipboard-copy";
 
 import QrModal from "./QrModal";
 
+import IUrls from "../types/urls";
 import { defaultDomain } from "../config";
 
-interface CardProps {
-  url: string;
-  token: string;
-}
-
-const Card: React.FC<CardProps> = (props) => {
+const Card: React.FC<IUrls> = (props) => {
   const { url, token } = props;
   const clipboard = useClipboard();
   const toast = useToast();

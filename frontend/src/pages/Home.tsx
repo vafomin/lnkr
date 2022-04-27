@@ -4,16 +4,12 @@ import { useLocalStorage } from "usehooks-ts";
 import UrlInput from "../components/UrlInput";
 import Card from "../components/Card";
 
+import IUrls from "../types/urls";
 import { shortURL } from "../api";
-
-interface Urls {
-  url: string;
-  token: string;
-}
 
 const Home: React.FC = () => {
   const [url, setUrl] = useState("");
-  const [urls, setUrls] = useLocalStorage<Array<Urls>>("myUrls", []);
+  const [urls, setUrls] = useLocalStorage<Array<IUrls>>("myUrls", []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
