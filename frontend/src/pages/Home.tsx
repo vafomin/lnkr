@@ -31,7 +31,9 @@ const Home: React.FC = () => {
 
         <Stack spacing={2} pt={4}>
           {urls ? (
-            urls.map((el) => <Card url={el.url} token={el.token} />)
+            urls.map((el, i) => (
+              <Card key={`card_number_${i}`} url={el.url} token={el.token} />
+            ))
           ) : (
             <></>
           )}
