@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "all": "cd frontend && yarn && cd ../server && yarn",
+    "install": "cd frontend && yarn && cd ../server && yarn",
     "frontend": "cd frontend && yarn serve",
     "server": "cd server && yarn start",
     "clean": "rimraf node_modules yarn.lock frontend/node_modules frontend/yarn.lock server/node_modules server/yarn.lock"
