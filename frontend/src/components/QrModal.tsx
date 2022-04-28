@@ -6,8 +6,12 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Button,
 } from "@chakra-ui/react";
+import { MdSave } from "react-icons/md";
 import QRCode from "react-qr-code";
+
+import { saveSvg } from "../utils";
 
 interface QrModalProps {
   url: string;
@@ -18,6 +22,11 @@ interface QrModalProps {
 const QrModal: React.FC<QrModalProps> = (props) => {
   const { url, isOpen, onClose } = props;
 
+  const onClickSave = () => {
+    saveSvg("#urlQR");
+    onClose();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -25,9 +34,18 @@ const QrModal: React.FC<QrModalProps> = (props) => {
         <ModalHeader>QR-code</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <QRCode value={url} />
+          <QRCode id="urlQR" value={url} />
         </ModalBody>
-        <ModalFooter></ModalFooter>
+        <ModalFooter>
+          <Button
+            size="md"
+            colorScheme="green"
+            leftIcon={<MdSave />}
+            onClick={onClickSave}
+          >
+            Save
+          </Button>
+        </ModalFooter>
       </ModalContent>
     </Modal>
   );
