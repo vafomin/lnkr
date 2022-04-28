@@ -7,7 +7,7 @@ import {
   Stack,
   useColorMode,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Header: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         <Flex alignItems="center">
           <Stack direction="row" spacing={7}>
             <Button onClick={toggleColorMode}>
-              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              {colorMode === "light" ? <MdDarkMode /> : <MdLightMode />}
             </Button>
           </Stack>
         </Flex>

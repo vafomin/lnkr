@@ -7,7 +7,7 @@ import {
   useToast,
   useDisclosure,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon, CopyIcon } from "@chakra-ui/icons";
+import { MdContentCopy, MdOpenInNew } from "react-icons/md";
 import { useClipboard } from "use-clipboard-copy";
 
 import QrModal from "./QrModal";
@@ -47,14 +47,16 @@ const Card: React.FC<IUrls> = (props) => {
           </Text>
         </Box>
         <Link href={shortUrl} isExternal>
-          Go linkr <ExternalLinkIcon mx="2px" />
+          <Box display="flex" gap={2} alignItems="center">
+            Go linkr <MdOpenInNew />
+          </Box>
         </Link>
       </Box>
       <Box display="flex" gap={2} pt={4}>
         <Button
           size="sm"
           colorScheme="green"
-          leftIcon={<CopyIcon />}
+          leftIcon={<MdContentCopy />}
           onClick={onCopyClick}
         >
           Copy link
