@@ -1,4 +1,4 @@
-import { Box, Heading, Button } from "@chakra-ui/react";
+import { Box, Heading, Button, Center } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const NotFound: React.FC = () => {
@@ -10,7 +10,9 @@ const NotFound: React.FC = () => {
 
   return (
     <Box display="flex" flexDirection="column" pt={8} alignItems="center">
-      <Heading mb={4}>There doesn't seem to be anything here...</Heading>
+      <Heading mb={4} mx={2}>
+        There doesn't seem to be anything here...
+      </Heading>
       <Button size="lg" onClick={onBack}>
         Back to home
       </Button>

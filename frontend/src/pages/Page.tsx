@@ -32,7 +32,9 @@ const Page: React.FC = () => {
 
   return (
     <Box display="flex" flexDirection="column" pt={8} alignItems="center">
-      <Heading>You will be redirected to the site in 10 seconds...</Heading>
+      <Heading mx={2}>
+        You will be redirected to the site in 10 seconds...
+      </Heading>
     </Box>
   );
 };
