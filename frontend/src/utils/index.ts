@@ -12,3 +12,7 @@ const downloadSvg = (url: string) => {
   link.href = url;
   link.click();
 };
+
+export const getFavicon = (url: string) => {
+  return `https://www.google.com/s2/favicons?domain=${url}`;
+};

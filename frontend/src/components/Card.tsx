@@ -13,6 +13,7 @@ import { useClipboard } from "use-clipboard-copy";
 import QrModal from "./QrModal";
 
 import IUrls from "../types/urls";
+import { getFavicon } from "../utils";
 import { defaultDomain } from "../config";
 
 const Card: React.FC<IUrls> = (props) => {
@@ -41,7 +42,10 @@ const Card: React.FC<IUrls> = (props) => {
   return (
     <Box w="100%" p={4} borderRadius="lg" borderWidth="1px">
       <Box display="flex" gap={4}>
-        <Box maxWidth="200px">
+        <Box display="flex" gap={2} alignItems="center" maxWidth="200px">
+          <Box pt={1}>
+            <img src={getFavicon(url)} />
+          </Box>
           <Text fontSize="md" color="teal" isTruncated>
             {url}
           </Text>
