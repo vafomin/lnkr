@@ -7,6 +7,13 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  Box,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { MdSave } from "react-icons/md";
 import QRCode from "react-qr-code";
@@ -21,11 +28,38 @@ interface QrModalProps {
 
 const QrModal: React.FC<QrModalProps> = (props) => {
   const { url, isOpen, onClose } = props;
+  const [useModal] = useMediaQuery("(min-width: 429px)");
 
   const onClickSave = () => {
     saveSvg("#urlQR");
     onClose();
   };
+
+  if (!useModal) {
+    return (
+      <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader borderBottomWidth="1px">QR-code</DrawerHeader>
+          <DrawerBody>
+            <Box display="flex" flexDirection="column" pt={8}>
+              <QRCode id="urlQR" value={url} />
+
+              <Button
+                my={4}
+                size="md"
+                colorScheme="green"
+                leftIcon={<MdSave />}
+                onClick={onClickSave}
+              >
+                Save
+              </Button>
+            </Box>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    );
+  }
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
