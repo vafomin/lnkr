@@ -40,7 +40,9 @@ const QrModal: React.FC<QrModalProps> = (props) => {
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">QR-code</DrawerHeader>
+          <DrawerHeader className="noSelect" borderBottomWidth="1px">
+            QR-code
+          </DrawerHeader>
           <DrawerBody>
             <Box display="flex" flexDirection="column" pt={8}>
               <QRCode id="urlQR" value={url} />
@@ -65,7 +67,7 @@ const QrModal: React.FC<QrModalProps> = (props) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>QR-code</ModalHeader>
+        <ModalHeader className="noSelect">QR-code</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <QRCode id="urlQR" value={url} />
