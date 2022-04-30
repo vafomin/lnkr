@@ -1,6 +1,6 @@
 # ![logo](frontend/public/favicon.ico) Lnkr
 
-![screenshot](/.github/screenshot.png)
+![screenshot](.github/screenshot.png)
 
 Simple link shortening
 
