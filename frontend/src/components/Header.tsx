@@ -17,7 +17,7 @@ const Header: React.FC = () => {
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <Box display="flex" alignItems="center">
           <img src="/logo.png" />
-          <Text fontSize="2xl" px={2}>
+          <Text fontSize="2xl" px={2} className="noSelect">
             Lnkr
           </Text>
         </Box>
