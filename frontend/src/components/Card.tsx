@@ -50,7 +50,7 @@ const Card: React.FC<IUrls> = (props) => {
             {url}
           </Text>
         </Box>
-        <Link href={shortUrl} isExternal>
+        <Link className="noSelect" href={shortUrl} isExternal>
           <Box display="flex" gap={2} alignItems="center">
             Go linkr <MdOpenInNew />
           </Box>
