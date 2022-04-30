@@ -1,5 +1,7 @@
 # ![logo](frontend/public/favicon.ico) Lnkr
 
+![screenshot](/.github/screenshot.png)
+
 Simple link shortening
 
 ### Live demo: [lnkr.space](https://lnkr.space/)
